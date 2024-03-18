@@ -11,6 +11,12 @@ services:
       - "./geo_data:/cell-tower-locator/geo_data"
     networks:
       - traefik
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.request.rule=Host(`${CELL_TOWER_LOCATOR_HOST}`)"
+      - "traefik.http.routers.request.tls=true"
+      - "traefik.http.routers.request.tls.certresolver=tls"
+      - "traefik.http.services.request.loadbalancer.server.port=5000"
 
 networks:
   traefik:
