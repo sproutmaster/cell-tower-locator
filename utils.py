@@ -1,6 +1,4 @@
 import math
-import json
-import xmltodict
 
 # Semi-axes of WGS-84 geo-dial reference
 
@@ -55,7 +53,3 @@ def bounding_box(latitude_in_degrees, longitude_in_degrees, half_side_in_km):
     return radians_to_degree(lat_min), radians_to_degree(lon_min), radians_to_degree(lat_max), radians_to_degree(
         lon_max)
 
-
-def xml_to_json(xml_data):
-    json_data = json.dumps(xmltodict.parse(xml_data), indent=4)
-    return json_data
