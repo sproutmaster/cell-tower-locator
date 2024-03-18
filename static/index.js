@@ -25,7 +25,6 @@ window.onload = function () {
 
     function init(position) {
         banner.innerHTML = "Latitude: " + position.coords.latitude + "</br>Longitude: " + position.coords.longitude;
-
         $.ajax({
             url: "/",
             type: "POST",
@@ -34,7 +33,10 @@ window.onload = function () {
                 long: position.coords.longitude
             },
             success: function (data) {
-                initMap(position.coords.latitude, position.coords.longitude);
+                if (data.status === "success")
+                    initMap(position.coords.latitude, position.coords.longitude);
+                else
+                    banner.innerHTML = "Something went wrong";
             }
         });
     }
