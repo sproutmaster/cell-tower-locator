@@ -1,4 +1,5 @@
 window.onload = function () {
+    console.log(window.location.origin)
     const banner = document.getElementById("banner");
     function main() {
         if (navigator.geolocation) {
@@ -17,7 +18,7 @@ window.onload = function () {
             gestureHandling: 'greedy',
         });
         let kmlLayer = new google.maps.KmlLayer({
-            url: window.location.origin,
+            url: window.location.origin + '/geo/' + lat + long,
             map: map
         });
     }
