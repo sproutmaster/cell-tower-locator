@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  cell-tower-locator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+        - "API_KEY=${API_KEY}"
+    volumes:
+      - "./geo_data:/cell-tower-locator/geo_data"
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
+
+volumes:
+    geo_data:
